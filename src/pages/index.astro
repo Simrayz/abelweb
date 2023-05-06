@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import LandingResources from "../components/LandingResources.astro";
 import LandingHero from "../components/LandingHero.astro";
+import LandingAbout from "../components/LandingAbout.astro";
 
 const currentYear = new Date().getFullYear();
 const timeDiff = Math.abs(Date.now() - new Date("1995-09-06").getTime());
@@ -10,38 +11,22 @@ const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
 ---
 
 <Layout title="Home">
-  <main class="flex flex-col min-h-screen">
-    <LandingHero />
-    <section class="bg-white">
-      <div class="container max-w-screen-sm mx-auto flex justify-center">
-        <div class="px-8 py-16 sm:py-8 text-lg">
-          <h4 class="mb-1 text-blue-700">Briefly about me</h4>
-          <div class="space-y-2 text-slate-800">
-            <p>
-              I'm currently {age} years old and working as a software engineer in
-              Trondheim, Norway
-            </p>
-            <p>
-              I enjoy playing the piano, listening to music, catching up on my
-              favorite shows, and learning new things
-            </p>
-            <p>
-              As a person I'm pragmatic, analytical, creative and idealistic
-            </p>
-            <p>
-              My favorite emoji is
-              <span role="img" aria-label="grimace">😬</span> and
-              <span role="img" aria-label="sweat smile">😅</span>
-            </p>
-          </div>
-        </div>
+  <main
+    class="min-h-screen max-w-screen-md container mx-auto flex items-center"
+  >
+    <div
+      class="flex flex-col md:rounded-lg overflow-hidden bg-white md:border border-gray-300 h-screen md:h-auto"
+    >
+      <LandingHero />
+      <div class="flex-1 flex flex-col px-8 py-8 gap-8 md:flex-row">
+        <LandingAbout />
+        <LandingResources />
       </div>
-    </section>
-    <LandingResources />
-    <section class="bg-blue-900 py-2 text-center">
-      <p class="text-blue-200">
-        Simen Abelsen &copy; {currentYear}
-      </p>
-    </section>
+      <section class="bg-blue-900 py-2 text-center">
+        <p class="text-blue-200">
+          Simen Abelsen &copy; {currentYear}
+        </p>
+      </section>
+    </div>
   </main>
 </Layout>
